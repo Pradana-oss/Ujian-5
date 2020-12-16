@@ -7,12 +7,12 @@
  */
 
 import React, { Component } from 'react';
-
 import Register from './components/screen/register';
 import { createStackNavigator } from '@react-navigation/stack';
 import Login from './components/screen/login';
 import { NavigationContainer } from '@react-navigation/native';
 import test from './test';
+import Home from './components/screen/home';
 
 
 
@@ -26,6 +26,7 @@ class App extends Component {
         <Stack.Navigator>
           <Stack.Screen name="Login" component={Login} />
           <Stack.Screen name="Register" component={Register} />
+          <Stack.Screen name="Home" component={Home} />
         </Stack.Navigator>
       </NavigationContainer>
 
