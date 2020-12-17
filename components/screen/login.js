@@ -9,7 +9,7 @@ import {
 import Icon from 'react-native-vector-icons/dist/Feather';
 import { Wrapper, Header, Left, Right, Container, Space, H1, P, Btn, LabelIconInput } from '../utils';
 import config from '../../config';
-import auth from '@react-native-firebase/auth';
+import auth from '@react-native-firebase/auth'
 
 class Login extends Component {
 
@@ -26,39 +26,32 @@ class Login extends Component {
     }
 
     componentDidMount(){
-        auth().onAuthStateChanged(user => {
-            if(user === undefined || user === null){
-                console.log("kosong")
-            }else{
-                this.props.navigation.navigate("Home");
-                console.log(user.email)
-            }
+    
+          
             
-        })
-    }
-
-  
+         
+        }
+        
 
     login() {
-        auth()
+         auth()
         .signInWithEmailAndPassword(this.state.email, this.state.password)
         .then(() => {
-            console.log('User account created & signed in!');
-            this.props.navigation.navigate('Home');
+          console.log('User account created & signed in!');
+          this.props.navigation.navigate("Home");
         })
         .catch(error => {
-            if (error.code === 'auth/email-already-in-use') {
+          if (error.code === 'auth/email-already-in-use') {
             Alert.alert('That email address is already in use!');
-            }
-
-            if (error.code === 'auth/invalid-email') {
+          }
+      
+          if (error.code === 'auth/invalid-email') {
             Alert.alert('That email address is invalid!');
-            }
-
-            Alert.alert("Failed",error.message);
+          }
+      
+          Alert.alert("Failed",error.message);
         });
     }
-    
 
     render() {
         return (
@@ -68,7 +61,7 @@ class Login extends Component {
                 <Header>
                     <Left></Left>
                     <Right>
-                        <TouchableOpacity onPress={() => this.props.navigation.navigate('Register',{nama:""})} style={[config.style.iconBtn, {marginRight: -10}]}>
+                        <TouchableOpacity onPress={() => this.props.navigation.navigate('Register',{nama:"test aja"})} style={[config.style.iconBtn, {marginRight: -10}]}>
                             <P>Sign Up</P>
                         </TouchableOpacity>
                     </Right>

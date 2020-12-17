@@ -1,39 +1,39 @@
-import React, { Component } from 'react'
-import {Text} from 'react-native'
+import React, { Component } from 'react';
+import { Text} from 'react-native'
 import auth from '@react-native-firebase/auth'
-import { Btn } from '../utils'
+import { Btn } from '../utils';
 class Home extends Component {
-
+   
     state = {
-        email :""
-
-    }
-
-    componentDidMount(){
-        auth().onAuthStateChanged(user => {
-            
-            
-        })
-    }
-
+      email :auth().currentUser.email
     
+    }
 
+   
+    
+    
+    componentWillUnmount(){
+    
+    }
+    
+    
     logout(){
-        auth()
+         auth()
         .signOut()
         .then(() => {
-            console.log('User signed out!')
-            this.props.navigation.navigate();
-        });
-        
-
+        console.log('User signed out!')
+        console.log(this.props)
+        this.props.navigation.goBack()
+        }
+        );
+    
     }
 
-    render(){
-        return(
+    render() {
+        return (
             <>
-            <Text>Hello </Text>
-            <Btn label= "Logout" onPress={() => this.logout()}/>
+            <Text>Hello {this.state.email}  </Text>
+            <Btn label ="Logout" onPress={() => this.logout()} />
             </>
         );
     }

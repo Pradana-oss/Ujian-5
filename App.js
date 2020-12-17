@@ -7,6 +7,7 @@
  */
 
 import React, { Component } from 'react';
+
 import Register from './components/screen/register';
 import { createStackNavigator } from '@react-navigation/stack';
 import Login from './components/screen/login';
@@ -24,9 +25,9 @@ class App extends Component {
     return (
       <NavigationContainer>
         <Stack.Navigator>
-          <Stack.Screen name="Login" component={Login} />
+          <Stack.Screen name="Login" component={Login}  />
           <Stack.Screen name="Register" component={Register} />
-          <Stack.Screen name="Home" component={Home} />
+          <Stack.Screen name="Home" component={Home} navigation={this.props.navigation} />
         </Stack.Navigator>
       </NavigationContainer>
 

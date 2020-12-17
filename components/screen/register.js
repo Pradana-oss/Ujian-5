@@ -9,6 +9,7 @@ import {
 import Icon from 'react-native-vector-icons/dist/Feather';
 import { Wrapper, Header, Left, Right, Container, Space, H1, P, Btn, LabelIconInput } from '../utils';
 import config from '../../config';
+
 import auth from '@react-native-firebase/auth';
 
  class Register extends Component {
@@ -37,12 +38,14 @@ import auth from '@react-native-firebase/auth';
 
 
     register() {
-
-        
-        auth()
-        .createUserWithEmailAndPassword(this.state.email, this.state.password)
-        .then(() => Alert.alert("User Created"))
-        .catch(error => Alert.alert("Failed", error.message))
+    
+    
+    auth()
+    .createUserWithEmailAndPassword(this.state.email, this.state.password)
+    .then(()=> Alert.alert("User Created"))
+    .catch(error =>  Alert.alert("Failed",error.message))
+    
+    
     }
 
     render() {

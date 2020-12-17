@@ -6,7 +6,7 @@ import {
 	Dimensions,
 } from 'react-native';
 
-import { Card, Space, Row, Column, Sm, Touchable, Price, StarRating } from '../utils';
+import { Card, Space, Row, Column, Sm, Touchable, Price, StarRating, Btn } from '../utils';
 import Icon from 'react-native-vector-icons/dist/Feather';
 import config from '../../config';
 
@@ -16,6 +16,8 @@ const maxWidth = (width/2) - 5;
 export default class ProductListItem extends React.Component {
 
 
+  
+
 	layout01() {
 		return (
 			<Card style={this.props.style} onPress={() => this.props.onPress(this.props.item)}>
@@ -24,7 +26,7 @@ export default class ProductListItem extends React.Component {
 					{
 							this.props.item.images.length > 0 ? 
 								<Image 
-				                    source={{uri: this.props.item.images[0]}}
+				                    source={{uri: this.props.item.images}}
 				                    style={styles.image} 
 				                /> : 
 				                <Image 
@@ -56,9 +58,20 @@ export default class ProductListItem extends React.Component {
 			</Card>
 		);
 	}
-
+    
+    
+     componentDidMount() {
+     
+     console.log("run")
+     
+     }
+    
+    
+    
 	render() {
-		return this.layout01();
+		return(
+		this.layout01()
+		)
 	}
 	
 }
