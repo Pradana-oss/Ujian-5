@@ -28,7 +28,7 @@ const PendingView = () => (
 	</View>
   );
 
-class Addproduct extends React.Component {
+class Adduser extends React.Component {
 
 	/*
     
@@ -50,9 +50,9 @@ class Addproduct extends React.Component {
 		showAddressModal: false,
 		id: "",
 		name: "",
-		rating: "",
+
 		price: "",
-		description: null,
+		description: "",
 		specification: "",
 		brand_name: "",
 		images: "",
@@ -109,7 +109,7 @@ class Addproduct extends React.Component {
 
 
 			<>
-				<H1>Tambah Data Barang</H1>
+				
 
 				<FlatList
 					data={this.state.listData}
@@ -119,8 +119,7 @@ class Addproduct extends React.Component {
 					renderItem={({ item, index }) => <ProductListItem item={item} onPress={() => {
 						this.setState({
 							id: item.id,
-							name: item.name,
-							rating: item.rating,
+							name: item.name,		
 							price: item.price,
 							description: item.description,
 							specification: item.specification,
@@ -168,9 +167,8 @@ class Addproduct extends React.Component {
 								showAddressModal: false,
 								id: "",
 								name: "",
-								rating: "",
 								price: "",
-								description: null,
+								description: "",
 								specification: "",
 								brand_name: "",
 								images: "",
@@ -186,7 +184,7 @@ class Addproduct extends React.Component {
 					<H2>Add New Product</H2>
 
 					<FloatingLabelInput
-						label="Name Product"
+						label="Nama"
 						onChangeText={(text) => this.setState({ name: text })}
 						returnKeyType={"next"}
 						value={this.state.name}
@@ -199,7 +197,7 @@ class Addproduct extends React.Component {
 					/>
 
 					<FloatingLabelInput
-						label="Harga"
+						label="Gender"
 						onChangeText={(text) => this.setState({ price: text })}
 						returnKeyType={"next"}
 						value={this.state.price}
@@ -213,7 +211,7 @@ class Addproduct extends React.Component {
 					/>
 
 					<FloatingLabelInput
-						label="Deskripsi Product"
+						label="Umur"
 						onChangeText={(text) => this.setState({ description: text })}
 						returnKeyType={"next"}
 						value={this.state.description}
@@ -227,7 +225,7 @@ class Addproduct extends React.Component {
 					/>
 
 					<FloatingLabelInput
-						label="Spesifikasi Produk"
+						label="Status"
 						onChangeText={(text) => this.setState({ specification: text })}
 						returnKeyType={"next"}
 						value={this.state.specification}
@@ -236,26 +234,11 @@ class Addproduct extends React.Component {
 							this.inputs['specification'] = input;
 						}}
 						onSubmitEditing={() => {
-							this.focusNextField('rating');
+							this.focusNextField('Ambil Foto');
 						}}
 					/>
-					
-
 					<FloatingLabelInput
-						label="Rating"
-						onChangeText={(text) => this.setState({ rating: text })}
-						value={this.state.rating}
-						returnKeyType={"next"}
-						ref={input => {
-							this.inputs['rating'] = input;
-						}}
-						onSubmitEditing={() => {
-							this.focusNextField('brand_name');
-						}}
-					/>
-
-					<FloatingLabelInput
-						label="Brand Name"
+						label="Location (Long/Lat)"
 						onChangeText={(text) => this.setState({ brand_name: text })}
 						value={this.state.brand_name}
 						returnKeyType={"next"}
@@ -265,54 +248,60 @@ class Addproduct extends React.Component {
 						onSubmitEditing={() => {
 							this.addProduct()
 						}}
-					/>
+						/>
+					
 			<Space/>
 					<Row>
 						<Column>
 						
 							<RNCamera
 		   
-          style={styles.preview}
-          type={RNCamera.Constants.Type.back}
-          flashMode={RNCamera.Constants.FlashMode.on}
-          androidCameraPermissionOptions={{
-            title: 'Permission to use camera',
-            message: 'We need your permission to use your camera',
-            buttonPositive: 'Ok',
-            buttonNegative: 'Cancel',
-          }}
-          androidRecordAudioPermissionOptions={{
-            title: 'Permission to use audio recording',
-            message: 'We need your permission to use your audio',
-            buttonPositive: 'Ok',
-            buttonNegative: 'Cancel',
-          }}
-        >
-          {({ camera, status, recordAudioPermissionStatus }) => {
-          this.camera = camera;
-		  if (status !== 'READY') {return <PendingView />
-		  }else{
-		  return (
-			<View  style={styles.capture}>
-			  
-			</View>
-		  );
-		  }
-          }}
-          
-        </RNCamera>
+						style={styles.preview}
+						type={RNCamera.Constants.Type.back}
+						flashMode={RNCamera.Constants.FlashMode.on}
+						androidCameraPermissionOptions={{
+							title: 'Permission to use camera',
+							message: 'We need your permission to use your camera',
+							buttonPositive: 'Ok',
+							buttonNegative: 'Cancel',
+						}}
+						androidRecordAudioPermissionOptions={{
+							title: 'Permission to use audio recording',
+							message: 'We need your permission to use your audio',
+							buttonPositive: 'Ok',
+							buttonNegative: 'Cancel',
+						}}
+						>
+						{({ camera, status, recordAudioPermissionStatus }) => {
+						this.camera = camera;
+						if (status !== 'READY') {return <PendingView />
+						}else{
+						return (
+							<View  style={styles.capture}>
+							
+							</View>
+						);
+						}
+						}}
+						
+						</RNCamera>
+						<Space/>
+						
 						</Column>
-
+						
 						<Column>
-					       <Btn label = "Ambil Gambar"  onPress={() => this.takePicture(this.camera)} />
+					       <Btn label = "Ambil Foto"  onPress={() => this.takePicture(this.camera)} />
 						</Column>
+						
 					</Row>
 				
 					<Space/>
 					
 					<Image	source = {{uri:this.state.images}} style={{ width: 300, height: 400 }}/>
-
+					
 					<Space />
+
+					
 
 					{this.addOrEdit()}
 					
@@ -418,7 +407,6 @@ class Addproduct extends React.Component {
 		database().ref('Product/').push({
 			id: this.state.id,
 			name: this.state.name,
-			rating: this.state.rating,
 			price: this.state.price,
 			description: this.state.description,
 			specification: this.state.specification,
@@ -432,9 +420,8 @@ class Addproduct extends React.Component {
 				showAddressModal: false,
 				id: "",
 				name: "",
-				rating: "",
 				price: "",
-				description: null,
+				description: "",
 				specification: "",
 				brand_name: "",
 				images: "",
@@ -466,7 +453,7 @@ class Addproduct extends React.Component {
 		database().ref('Product/' + this.state.key).update({
 			id: this.state.id,
 			name: this.state.name,
-			rating: this.state.rating,
+			
 			price: this.state.price,
 			description: this.state.description,
 			specification: this.state.specification,
@@ -480,7 +467,7 @@ class Addproduct extends React.Component {
 				showAddressModal: false,
 				id: "",
 				name: "",
-				rating: "",
+				
 				price: "",
 				description: null,
 				specification: "",
@@ -521,4 +508,4 @@ const styles = StyleSheet.create({
 	},
   });
 
-export default Addproduct;
+export default Adduser;

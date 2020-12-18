@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "524373166038",
-    "project_id": "juaracodingrn",
-    "storage_bucket": "juaracodingrn.appspot.com"
+    "project_number": "776326690425",
+    "project_id": "ujian5-juaracoding",
+    "storage_bucket": "ujian5-juaracoding.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:524373166038:android:01f7d6fbf7920dd9374677",
+        "mobilesdk_app_id": "1:776326690425:android:40eab9bf9d8b5f6c6d06a8",
         "android_client_info": {
           "package_name": "com.belajarnavigationandroid"
         }
       },
       "oauth_client": [
         {
-          "client_id": "524373166038-3tob1sbj6vhu7cq10hjsqcnapbn84fsn.apps.googleusercontent.com",
+          "client_id": "776326690425-a9fg6ga0lp6len2u5iokrqpecq67u3qq.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBYq1975tLV973Oaf1i4MG_sssQj-FVHcE"
+          "current_key": "AIzaSyDAUFEHzN4Rfhz0XUpNg4md170M2ovMDnI"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "524373166038-3tob1sbj6vhu7cq10hjsqcnapbn84fsn.apps.googleusercontent.com",
+              "client_id": "776326690425-a9fg6ga0lp6len2u5iokrqpecq67u3qq.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

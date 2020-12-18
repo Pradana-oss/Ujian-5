@@ -6,7 +6,7 @@ import {
 	Dimensions,
 } from 'react-native';
 
-import { Card, Space, Row, Column, Sm, Touchable, Price, StarRating, Btn } from '../utils';
+import { Card, Space, Row, Column, Sm, Sm2, Touchable, Price, StarRating, Btn } from '../utils';
 import Icon from 'react-native-vector-icons/dist/Feather';
 import config from '../../config';
 
@@ -20,8 +20,9 @@ export default class ProductListItem extends React.Component {
 
 	layout01() {
 		return (
-			<Card style={this.props.style} onPress={() => this.props.onPress(this.props.item)}>
+			<Card style={this.props.style}>
 				<Row nomargin={true}>
+				
 					<Column flex={0.37} align={'center'} nopadding={true}>
 					{
 							this.props.item.images.length > 0 ? 
@@ -35,21 +36,24 @@ export default class ProductListItem extends React.Component {
 				                />
 						}
 					</Column>
+					
 					<Column flex={0.63} style={{paddingVertical: 10}}>
 						<View>
 							<Sm>{this.props.item.name}</Sm>
 						</View>
 						<Space height={3} />
+						
 						<Row nomargin={true} style={{alignItems: 'flex-end', flex: 1}}>
+						
 							<Column nopadding={true}>
 								<View>
-									<StarRating rating={this.props.item.rating} />
-									<Price specialPrice={this.props.item.special_price} price={this.props.item.price} />
+									<Sm style={styles.Size}>{this.props.item.price} / {this.props.item.description}</Sm>
+									<Sm style={styles.Size}>{this.props.item.specification}</Sm>
 								</View>
 							</Column>
-							<Column align={'flex-end'} nopadding={true}>
-								<Touchable onPress={() => {}} style={[config.style.iconBtn, config.style.gridCartBtn]}>
-									<Icon name={'shopping-cart'} size={20} color={config.style.iconBtnColor} />
+							<Column flex={0.3} style={{paddingVertical: 0.5}}>
+								<Touchable  onPress={() => {this.props.onPress(this.props.item)}} style={[config.style.iconBtn, config.style.gridCartBtn]}>
+									<Icon  name={'edit'} size={20} color={config.style.iconBtnColor} />
 								</Touchable>
 							</Column>
 						</Row>
@@ -77,6 +81,14 @@ export default class ProductListItem extends React.Component {
 }
 
 const styles = StyleSheet.create({
+	pojok:{
+		flex: 1,
+		flexDirection: 'row'
+	},
+	Size:{
+		fontSize: 15,
+
+	},
 	outer: {
 		width: '100%', 
 		padding: 4,

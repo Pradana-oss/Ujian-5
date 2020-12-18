@@ -6,6 +6,7 @@
 import {AppRegistry} from 'react-native';
 import App from './App';
 import {name as appName} from './app.json';
-import Addproduct from './components/screen/addproduct';
+import Adduser from './components/screen/adduser';
 
-AppRegistry.registerComponent(appName, () => Addproduct);
+
+AppRegistry.registerComponent(appName, () => Adduser);
